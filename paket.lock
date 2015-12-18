@@ -1,0 +1,14 @@
+NUGET
+  remote: https://nuget.org/api/v2
+  specs:
+    FSharp.Data (2.2.5)
+      Zlib.Portable (>= 1.10.0) - framework: portable-net40+sl50+wp80+win80
+    Http.fs (1.5.1)
+    Zlib.Portable (1.11.0) - framework: portable-net40+sl50+wp80+win80
+GITHUB
+  remote: v-zubritsky/fsharp-common
+  specs:
+    ConvertUtils.fs (672184508c0965d6555c27bc93c691aadc4f376f)
+    PathUtils.fs (672184508c0965d6555c27bc93c691aadc4f376f)
+    StringUtils.fs (672184508c0965d6555c27bc93c691aadc4f376f)
+    UnionUtils.fs (672184508c0965d6555c27bc93c691aadc4f376f)

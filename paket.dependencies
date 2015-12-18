@@ -1,0 +1,9 @@
+source https://nuget.org/api/v2
+
+nuget FSharp.Data ~> 2.2.5
+nuget Http.fs ~> 1.5.1
+
+github v-zubritsky/fsharp-common StringUtils.fs
+github v-zubritsky/fsharp-common ConvertUtils.fs
+github v-zubritsky/fsharp-common PathUtils.fs
+github v-zubritsky/fsharp-common UnionUtils.fs
