@@ -1,4 +1,4 @@
-module TpClient.Http
+module internal TpClient.Http
 
 open HttpClient
 open System.Net

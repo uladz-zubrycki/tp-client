@@ -8,7 +8,7 @@ open Http
 open FSharpCommon.ConvertUtils
 open FSharpCommon.StringUtils
 
-type private TpUserInfo = { UserName: string; Password: string; }
+type internal TpUserInfo = { UserName: string; Password: string; }
 //type private HttpErrorResponse = JsonProvider<".\JsonSamples\GithubClient\HttpError.json">
 //type GetProjectsResponse = JsonProvider<"""..\JsonSamples\TargetProcess\GetProjects.json""">
 
@@ -36,42 +36,42 @@ module Filtering =
         | DateTimeFilter of Filter<DateTime> 
     
     type Filters = 
-        static member equal (attr: string, value: string) = StringFilter(Equal(attr, value)) 
-        static member equal (attr: string, value: int) = IntFilter(Equal(attr, value)) 
-        static member equal (attr: string, value: float) = FloatFilter(Equal(attr, value)) 
-        static member equal (attr: string, value: DateTime) = DateTimeFilter(Equal(attr, value)) 
-        static member notEqual (attr: string, value: string) = StringFilter(NotEqual(attr, value)) 
-        static member notEqual (attr: string, value: int) = IntFilter(NotEqual(attr, value)) 
-        static member notEqual (attr: string, value: float) = FloatFilter(NotEqual(attr, value)) 
-        static member notEqual (attr: string, value: DateTime) = DateTimeFilter(NotEqual(attr, value)) 
-        static member greater (attr: string, value: string) = StringFilter(Greater(attr, value)) 
-        static member greater (attr: string, value: int) = IntFilter(Greater(attr, value)) 
-        static member greater (attr: string, value: float) = FloatFilter(Greater(attr, value)) 
-        static member greater (attr: string, value: DateTime) = DateTimeFilter(Greater(attr, value)) 
-        static member greaterOrEqual (attr: string, value: string) = StringFilter(GreaterOrEqual(attr, value)) 
-        static member greaterOrEqual (attr: string, value: int) = IntFilter(GreaterOrEqual(attr, value)) 
-        static member greaterOrEqual (attr: string, value: float) = FloatFilter(GreaterOrEqual(attr, value)) 
-        static member greaterOrEqual (attr: string, value: DateTime) = DateTimeFilter(GreaterOrEqual(attr, value)) 
-        static member less (attr: string, value: string) = StringFilter(Less(attr, value)) 
-        static member less (attr: string, value: int) = IntFilter(Less(attr, value)) 
-        static member less (attr: string, value: float) = FloatFilter(Less(attr, value)) 
-        static member less (attr: string, value: DateTime) = DateTimeFilter(Less(attr, value))
-        static member lessOrEqual (attr: string, value: string) = StringFilter(LessOrEqual(attr, value)) 
-        static member lessOrEqual (attr: string, value: int) = IntFilter(LessOrEqual(attr, value)) 
-        static member lessOrEqual (attr: string, value: float) = FloatFilter(LessOrEqual(attr, value)) 
-        static member lessOrEqual (attr: string, value: DateTime) = DateTimeFilter(LessOrEqual(attr, value))
-        static member inList (attr: string, values: string list) = StringFilter(InList(attr, values)) 
-        static member inList (attr: string, values: int list) = IntFilter(InList(attr, values)) 
-        static member inList (attr: string, values: float list) = FloatFilter(InList(attr, values)) 
-        static member inList (attr: string, values: DateTime list) = DateTimeFilter(InList(attr, values))
-        static member contains (attr: string, value: string) = StringFilter(Contains(attr, value)) 
-        static member contains (attr: string, value: int) = IntFilter(Contains(attr, value)) 
-        static member contains (attr: string, value: float) = FloatFilter(Contains(attr, value)) 
-        static member contains (attr: string, value: DateTime) = DateTimeFilter(Contains(attr, value))
-        static member isNull (attr: string) = StringFilter(IsNull(attr)) 
-        static member isNotNull (attr: string) = StringFilter(IsNotNull(attr)) 
+        static member equal(attr, value) = StringFilter(Equal(attr, value)) 
+        static member equal(attr, value) = IntFilter(Equal(attr, value)) 
+        static member equal(attr, value) = FloatFilter(Equal(attr, value)) 
+        static member equal(attr, value) = DateTimeFilter(Equal(attr, value)) 
+        static member notEqual(attr, value) = StringFilter(NotEqual(attr, value)) 
+        static member notEqual(attr, value) = IntFilter(NotEqual(attr, value)) 
+        static member notEqual(attr, value) = FloatFilter(NotEqual(attr, value)) 
+        static member notEqual(attr, value) = DateTimeFilter(NotEqual(attr, value)) 
+        static member greater(attr, value) = StringFilter(Greater(attr, value)) 
+        static member greater(attr, value) = IntFilter(Greater(attr, value)) 
+        static member greater(attr, value) = FloatFilter(Greater(attr, value)) 
+        static member greater(attr, value) = DateTimeFilter(Greater(attr, value)) 
+        static member greaterOrEqual(attr, value) = StringFilter(GreaterOrEqual(attr, value)) 
+        static member greaterOrEqual(attr, value) = IntFilter(GreaterOrEqual(attr, value)) 
+        static member greaterOrEqual(attr, value) = FloatFilter(GreaterOrEqual(attr, value)) 
+        static member greaterOrEqual(attr, value) = DateTimeFilter(GreaterOrEqual(attr, value)) 
+        static member less(attr, value) = StringFilter(Less(attr, value)) 
+        static member less(attr, value) = IntFilter(Less(attr, value)) 
+        static member less(attr, value) = FloatFilter(Less(attr, value)) 
+        static member less(attr, value) = DateTimeFilter(Less(attr, value))
+        static member lessOrEqual(attr, value) = StringFilter(LessOrEqual(attr, value)) 
+        static member lessOrEqual(attr, value) = IntFilter(LessOrEqual(attr, value)) 
+        static member lessOrEqual(attr, value) = FloatFilter(LessOrEqual(attr, value)) 
+        static member lessOrEqual(attr, value) = DateTimeFilter(LessOrEqual(attr, value))
+        static member inList(attr, values) = StringFilter(InList(attr, values)) 
+        static member inList(attr, values) = IntFilter(InList(attr, values)) 
+        static member inList(attr, values) = FloatFilter(InList(attr, values)) 
+        static member inList(attr, values) = DateTimeFilter(InList(attr, values))
+        static member contains(attr, value) = StringFilter(Contains(attr, value)) 
+        static member contains(attr, value) = IntFilter(Contains(attr, value)) 
+        static member contains(attr, value) = FloatFilter(Contains(attr, value)) 
+        static member contains(attr, value) = DateTimeFilter(Contains(attr, value))
+        static member isNull(attr) = StringFilter(IsNull(attr)) 
+        static member isNotNull(attr) = StringFilter(IsNotNull(attr)) 
         
-    let createFilterQueryValue (filters: Filter list) = 
+    let internal createFilterQueryValue (filters: Filter list) = 
         let getOperandStr value = 
             match value with
             | DateTime(value) -> "'" + value.ToString("yyyy-MM-dd") + "'"
@@ -112,7 +112,7 @@ module Paging =
         | SkipTake of skip: int * take: int
         | GetPage of pageSize: int * pageIndex: int
 
-    let createPagingQueryParameters = function
+    let internal createPagingQueryParameters = function
         | SkipTake(skip, take) -> 
             seq { 
                 yield ("skip", skip |> toString) 
@@ -122,65 +122,63 @@ module Paging =
                 yield ("skip", pageSize * pageIndex |> toString) 
                 yield ("take", pageSize |> toString)}
 
-[<AutoOpen>]
-module private Http = 
-    type IResponseParser<'a> = abstract member Parse: string -> 'a 
-    type ICollectionResponseParser<'a> = abstract member Parse: string -> 'a []
+type internal IResponseParser<'a> = abstract member Parse: string -> 'a 
+type internal ICollectionResponseParser<'a> = abstract member Parse: string -> 'a []
 
-    let withDefaultParameters userInfo request = 
-        request
-        |> withBasicAuthentication userInfo.UserName userInfo.Password
-        |> withHeader (Accept("application/json"))
+let internal withDefaultParameters userInfo request = 
+    request
+    |> withBasicAuthentication userInfo.UserName userInfo.Password
+    |> withHeader (Accept("application/json"))
 
-    let maybeWithFiltering filter request = 
-        let maybeFilteringStr = filter |> Option.map createFilterQueryValue
-        request |> maybeWithQueryStringParam ("where", maybeFilteringStr)
+let internal maybeWithFiltering filter request = 
+    let maybeFilteringStr = filter |> Option.map createFilterQueryValue
+    request |> maybeWithQueryStringParam ("where", maybeFilteringStr)
 
-    let maybeWithPaging pager request = 
-        pager 
-        |> Option.map createPagingQueryParameters
-        |> Option.map (fun queryStringParams -> request |> withQueryStringParams queryStringParams)
-        |> function
-           | Some(newRequest) -> newRequest
-           | None -> request
+let internal maybeWithPaging pager request = 
+    pager 
+    |> Option.map createPagingQueryParameters
+    |> Option.map (fun queryStringParams -> request |> withQueryStringParams queryStringParams)
+    |> function
+        | Some(newRequest) -> newRequest
+        | None -> request
 
-    let processTPResponse handlers (response: Response) = 
-        let handlersDict = handlers |> dict
-        let createResponseMessage (message: string) =
-            let message = message.Trim([|'.'|])
-            match response.EntityBody with
-            | Some(responseBody) -> sprintf "%s. Status code: '%d', response body: '%s'." message response.StatusCode responseBody
-            | None -> sprintf "%s. Status code: '%d'." message response.StatusCode 
+let internal processTPResponse handlers (response: Response) = 
+    let handlersDict = handlers |> dict
+    let createResponseMessage (message: string) =
+        let message = message.Trim([|'.'|])
+        match response.EntityBody with
+        | Some(responseBody) -> sprintf "%s. Status code: '%d', response body: '%s'." message response.StatusCode responseBody
+        | None -> sprintf "%s. Status code: '%d'." message response.StatusCode 
         
-        match handlersDict.TryGetValue response.StatusCode with
-        | true, handler -> response.EntityBody |> handler
-        | false, _ -> 
-            let statusCodeStr = response.StatusCode.ToString()
-            match statusCodeStr with
-            | "400" -> apiFailure "TargetProcess api communication error: Unauthorized. Wrong or missed credentials."
-            | "401" -> apiFailure "TargetProcess api communication error: Bad format. Incorrect parameter or query string."
-            | "403" -> apiFailure "TargetProcess api communication error: Forbidden. A user has insufficient rights to perform an action."
-            | "404" -> apiFailure "TargetProcess api communication error: Requested Entity not found."
-            | "500" -> apiFailure "TargetProcess api server-side error."
-            | "501" -> apiFailure "TargetProcess api server-side error: Not implemented. The requested action is either not supported or not implemented yet."
-            | StartsWith "4" -> apiFailure <| createResponseMessage "Unexpected TargetProcess api communication error."
-            | StartsWith "5" -> apiFailure <| createResponseMessage "TargetProcess api server-side error."
-            | _ -> apiFailure <| createResponseMessage "Nonsupported TargetProcess api response type."
+    match handlersDict.TryGetValue response.StatusCode with
+    | true, handler -> response.EntityBody |> handler
+    | false, _ -> 
+        let statusCodeStr = response.StatusCode.ToString()
+        match statusCodeStr with
+        | "400" -> apiFailure "TargetProcess api communication error: Bad format. Incorrect parameter or query string."
+        | "401" -> apiFailure "TargetProcess api communication error: Unauthorized. Wrong or missed credentials."
+        | "403" -> apiFailure "TargetProcess api communication error: Forbidden. A user has insufficient rights to perform an action."
+        | "404" -> apiFailure "TargetProcess api communication error: Requested Entity not found."
+        | "500" -> apiFailure "TargetProcess api server-side error."
+        | "501" -> apiFailure "TargetProcess api server-side error: Not implemented. The requested action is either not supported or not implemented yet."
+        | StartsWith "4" -> apiFailure <| createResponseMessage "Unexpected TargetProcess api communication error."
+        | StartsWith "5" -> apiFailure <| createResponseMessage "TargetProcess api server-side error."
+        | _ -> apiFailure <| createResponseMessage "Nonsupported TargetProcess api response type."
 
-    let getTpResponse url userInfo filters pager = 
-        createRequest Get url
-        |> withDefaultParameters userInfo
-        |> maybeWithFiltering filters
-        |> maybeWithPaging pager
-        |> getResponse
+let internal getTpResponse url userInfo filters pager = 
+    createRequest Get url
+    |> withDefaultParameters userInfo
+    |> maybeWithFiltering filters
+    |> maybeWithPaging pager
+    |> getResponse
 
-    let getSingle<'a, 'b when 'a :> IResponseParser<'b>> (parser: 'a, url, userInfo, filters, pager) = 
-        getTpResponse url userInfo filters pager
-        |> processTPResponse [200, (fun responseBody -> responseBody |> Option.map parser.Parse)] 
+let internal getSingle<'a> (parser: IResponseParser<'a>, url, userInfo, filters, pager) = 
+    getTpResponse url userInfo filters pager
+    |> processTPResponse [200, (fun responseBody -> responseBody |> Option.map parser.Parse)] 
     
-    let getCollection<'a, 'b when 'a :> ICollectionResponseParser<'b>> (parser: 'a, url, userInfo, filters, pager) = 
-        getTpResponse url userInfo filters pager
-        |> processTPResponse [
-            200, (function 
-                    | Some(responseBody) -> parser.Parse responseBody  
-                    | None -> Array.empty<'b> )]
+let internal getCollection<'a> (parser: ICollectionResponseParser<'a>, url, userInfo, filters, pager) = 
+    getTpResponse url userInfo filters pager
+    |> processTPResponse [
+        200, (function 
+                | Some(responseBody) -> parser.Parse responseBody  
+                | None -> Array.empty<'a> )]
