@@ -63,6 +63,8 @@
     <None Include="build\ClientGenerator.fsx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="build\RestModel.fsx" />
+    <None Include="build\JsonSamplesLoader.fsx" />
     <None Include="misc\JsonSamples\GetContext.json" />
     <None Include="misc\JsonSamples\GetProjects.json" />
     <None Include="paket.dependencies" />
